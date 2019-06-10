@@ -1,0 +1,94 @@
+<HTML>
+    <head>
+        <title>
+            Page with Styles
+        </title>
+        <style>
+        .photo{
+            height: 200px;
+            width: 100%;
+            background-image: url("background1.jpg");
+
+        }
+        
+        li{
+            background-color: black;
+            top: 0;
+            position: relative;
+            font-size: 2rem;    
+            width: 100%;
+            
+           
+        }
+        
+        
+        .fix-nav li{
+            position: fixed;
+          
+            box-shadow: 0 5px rgba(0,0,0,0.1) ;
+            opacity: 0.75;
+        }
+
+        li a{
+            margin-right: 50px;
+            display: inline;
+            color: aliceblue;
+        }
+        
+        .txt-body{
+            width: 60%;
+            border: 15px solid green;
+            border-radius: 10px;
+            padding: 50px;
+            margin: auto;
+            margin-top: 100px;
+            
+            
+        }
+        </style>
+    </head>
+    <body class="bod">
+        <div class="photo"></div>
+    
+            <li id="main">
+                <a  href="">Home</a>
+                
+                <a href="">About</a>
+                <a href="">Contacts</a>
+                <a style="float:right" href="">Help</a>
+            </li>
+        
+        <div class="txt-body">
+            Lorem ipsum dolor sit amet, nam te stet posse, ad his tritani patrioque, et graeci verterem sed. Nec id prompta eleifend, democritum sententiae no quo. Eos primis interesset ea, nec no percipitur vituperatoribus, facilis honestatis deterruisset duo in. Movet simul virtute sit cu, te stet quas mutat est. Qui maiorum albucius ex, choro indoctum vel an. Mea ancillae euripidis temporibus et, possim dolorum laoreet eu ius. Ignota putant blandit ne eos.
+
+            Vidit natum minimum id cum, eam ei docendi oportere torquatos. Sed ea ferri adhuc, id duo suas mutat volumus, decore vituperata ad eos. Dicant aperiam aliquid per at. Ad quas error scribentur his.
+            Has iuvaret tacimates eu, vis vivendo adipiscing an. Offendit inciderint his at. Cu mel ullum assentior. Ne his nisl lobortis, omnium definitiones in mel.
+            Consul ceteros atomorum sed no, vix iusto tractatos argumentum no. Sea an nostro persecuti. Est falli facete et, aeterno reformidans eos ne. Qui soluta feugait ei, nam no tibique efficiantur. Simul choro menandri id vix, et quo labitur accommodare interpretaris. His cu odio nusquam postulant, commodo tractatos sea et, novum reprehendunt an cum. Quaeque sensibus moderatius est ea, philosophia comprehensam quo ex.
+            Per falli patrioque intellegebat ea, no atqui invenire mel. Malorum utroque feugait vix ei, wisi dolor impedit ne his. Ex per wisi erat. An per probatus persequeris disputationi, his dicit iuvaret no. Nec recusabo consequuntur te, ex est hinc virtute elaboraret. No qui omnis zril, iuvaret neglegentur disputationi id duo.
+
+            Nec at graeci eleifend, detracto persecuti est cu. Dico definitiones ad sit, mea enim maiorum propriae at. In usu ipsum bonorum salutatus, eu vitae molestiae instructior pri. Nec et dolor posidonium, zril menandri ut vis. Cu facer erant torquatos his, sit cu diceret nusquam suscipit.
+            Brute debet congue no his, consul diceret ad vel. Cu cum prompta probatus euripidis. Usu labores vituperata theophrastus in. Ad vero quas duo. In est option eloquentiam. Sed oblique fabellas quaerendum te, mea ex agam sanctus.
+
+            Rebum propriae nam cu. Ea inani voluptatibus necessitatibus qui, sea no appetere inciderint, an mei clita ornatus. An eum verterem urbanitas. Dicit denique pro id, ut fabellas recteque partiendo usu, labitur reprehendunt ut pri. Solet ornatus mel ut, eu nam tamquam civibus omnesque. Vim ex utinam dissentias, eam ex discere aliquid. An purto facer appetere vis, eu maiorum vivendum per.
+            Case neglegentur mediocritatem sea ea. Homero facete aeterno ne mea, odio labores ex eos. Aperiam nostrud mei ad, cu mea animal suscipit molestiae, per detraxit deserunt evertitur cu. Pri te facete vulputate, ne pri copiosae concludaturque, essent invenire et pro. Te amet idque nec, ea menandri laboramus torquatos vis. Ex mel unum omnes omnium.
+            Eos te magna lucilius euripidis. Vide postea cetero eu sit. At sit paulo lobortis, pri primis reprehendunt an, quaestio accusamus eos id. Sumo suavitate cu mea, ipsum accommodare ex eam. Erant graece vis in, stet liber albucius an nam.
+        </div>
+        <script>
+            const navi = document.querySelector("#main");
+            const top1 = navi.offsetTop;
+            const bb = document.querySelector(".bod");
+            
+            function naviScroll(e){
+                if(window.scrollY >= top1){
+                    bb.classList.add("fix-nav");
+                    bb.style.paddingTop = navi.offsetHeight + 'px';
+                }else{
+                    bb.classList.remove("fix-nav");
+                    bb.style.paddingTop = 0;
+                }
+                //console.log(window.scrollY);
+            }
+            window.addEventListener('scroll', naviScroll);
+        </script>
+    </body>
+</HTML>

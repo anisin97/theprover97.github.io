@@ -1,0 +1,109 @@
+<HTML>
+    <head>
+        <title>
+            Flex-Properties...
+        </title>
+    </head>
+    <body>
+        <style>
+        HTML{
+            font-size: 20px;
+            font-family: 'Times New Roman';
+            font-weight: 200; 
+        }
+        .panel{
+            text-align: center;
+            align-items: center;
+            transition: 
+                font-size 0.7s cubic-bezier(0.61,-0.19,0.7,-0.11),
+                flex 0.7s cubic-bezier(0.61,-0.19,0.7,-0.11);
+            font-size: 20px;
+            background-size: cover;
+            
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .panels{
+            min-height: 100vh;
+            text-shadow: 1px 0px blue;
+            color: wheat;
+            display: flex;
+        }
+        .panel1{background-image: url(https://ak4.picdn.net/shutterstock/videos/13442234/thumb/1.jpg);}
+        .panel2{background-image: url(https://wallpapercave.com/wp/j70YE7S.jpg);}
+        .panel5{background-image: url(https://ak6.picdn.net/shutterstock/videos/6963856/thumb/1.jpg);}
+        .panel4{background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2vZA1QxHHltIusoDbnJJkD9Xle6UdfSv1RVjrt3nFIs2cVr-);}
+        .panel3{background-image: url(https://i.ytimg.com/vi/m9YPpeUCZ3U/maxresdefault.jpg);}
+        .panel > * {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .panel > *:first-child{ transform: translateY(-100%); }
+        .panel.open-active > *:first-child{ transform: translateY(0); }
+        .panel > *:last-child{ transform: translateY(100%); }
+        .panel.open-active > *:last-child{ transform: translateY(0); }
+        .panel p{
+            text-transform: uppercase;
+            font-family: 'Franklin Gothic Medium';
+            font-size: 2rem;
+            
+            align-content: center;
+            justify-items: center;
+        }
+        
+        .panel.open{
+            flex: 5;
+            font-size: 40px;
+        }
+        </style>
+
+        <div class="panels">
+            <div class="panel panel1">
+                <p>Hey</p>
+                <p>Let's</p>
+                <p>Dance</p>
+            </div>
+            <div class="panel panel2">
+                <p>Give</p>
+                <p>Take</p>
+                <p>Receive</p>
+            </div>
+            <div class="panel panel3">
+                <p>Millionaire</p>
+                <p>by</p>
+                <p>Mistake</p>
+            </div>
+            <div class="panel panel4">
+                <p>Don't</p>
+                <p>Know</p>
+                <p>Anything</p>
+            </div>
+            <div class="panel panel5">
+                <p>How</p>
+                <p>Are</p>
+                <p>You!!</p>
+            </div>
+        </div>
+        <script>
+        const panels = document.querySelectorAll(".panel");
+
+        function toggleOpen(){
+            this.classList.toggle('open');
+        }
+        function activate_open(e) {
+            if (e.propertyName.includes('flex')){
+            this.classList.toggle('open-active');}
+        }
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', activate_open));
+        </script>
+    </body>
+</HTML>

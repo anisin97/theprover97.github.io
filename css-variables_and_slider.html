@@ -1,0 +1,60 @@
+<HTML>
+    <head>
+        <title>
+            NEW WINDOW
+        </title>
+    </head>
+    <body>
+        <h1>CSS Variables and <span class="alpha">JS</span></h1>
+        <div class="controls">
+            <label for="spacing">Spacing:</label>
+            <input type="range" name="spacing" min="1" max="150" value="5" data-valve="px">
+            <label for="blur">Blur:</label>
+            <input type="range" name="blur" min="1" max="150" value="5" data-valve="px">
+            <label for="base">Base:</label>
+            <input type="color" name="base" value="#ffc600" >
+        </div>
+        <img src="background1.jpg">
+        <style>
+            :root{
+                --spacing: 10px;
+                --blur: 10px;
+                --base: #ffc600;
+            }
+        body{
+            text-align: center;
+            background: #193459;
+            color: azure;
+            font-size: 50px;
+        }
+        .alpha{
+            
+            font-family: 'Courier New';
+            
+            color: var(--base);
+        }
+        .controls{
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        img{
+            padding: var(--spacing);
+            background: var(--base);
+            filter: blur(var(--blur));
+        }
+        </style>
+        <script>
+        const inputs=document.querySelectorAll('.controls input');
+
+        function Updates(){
+            const sffx = this.dataset.valve || '';
+            console.log(this.value);
+            document.documentElement.style.setProperty(`--${this.name}`,this.value + sffx);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', Updates));
+        
+        inputs.forEach(input => input.addEventListener('mousemove', Updates));
+        </script>
+    </body>
+</HTML>

@@ -1,0 +1,106 @@
+
+<HTML>
+
+<head>
+    <style>
+    .key{
+        border: 6px solid black;
+        border-radius: 5px;
+        background-color: gray ;
+        margin: 1rem ;
+        font-size: 1.5rem ;
+        align-items: center;
+        padding: 1rem .5rem ;
+        transition: all 0.07s;
+        width: 100px;
+        text-align: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.4);
+        text-shadow: 0 0 5px black;
+        justify-items: center;
+    }
+    .playing{
+        transform: scale(1.2);
+        border-color: #ffc600;
+        box-shadow: 0 0 10px #ffc600;
+    }
+    body{
+        background-image: url("background1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+    kbd{
+        display: block;
+        font-size: 40px;
+    }
+    .keys
+    {
+        size: 20;
+        color: white;
+    }
+    .sound{
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ffc600;
+    }
+        </style>
+    
+</head>
+<body>
+<div >
+    <div data-key="65" class="key">
+    <kbd>a</kbd>
+    <span class="sound">ab</span>
+    </div>
+    <br>
+    <br>
+    <div data-key="66" class="key">
+    <kbd>b</kbd>
+    <span class="sound">bc</span>
+    </div>
+    <br>
+    <br>
+    <div data-key="67" class="key">
+    <kbd>c</kbd>
+    <span class="sound">cd</span>
+    </div>
+    <br>
+    <br>
+    <div data-key="68" class="key">
+    <kbd>d</kbd>
+    <span class="sound">de</span>
+    </div>
+    <br>
+    <br>
+</div>
+
+<audio data-key="65" src="Bass-Drum-1.wav"></audio>
+<audio data-key="66" src="Bass-Drum-1.wav"></audio>
+<audio data-key="67" src="Bass-Drum-1.wav"></audio>
+<audio data-key="68" src="Bass-Drum-1.wav"></audio>
+
+<script>
+    window.addEventListener('keydown', function(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+        console.log(audio);
+        if(!audio)return;
+        audio.currentTime = 0; 
+        audio.play();
+        key.classList.add('playing');
+        
+    });
+    function removeTransition(e){
+        if(e.propertyName !== 'transform') return;
+        this.classList.remove('playing');
+    }
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    
+</script>
+
+</body>
+</HTML>

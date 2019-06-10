@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>A Video Player!!</title>
+        <style>
+            body{
+                background: palevioletred;
+                padding: 10px;
+            }
+        div{
+            background-color: rgb(163, 240, 176);
+            width: 400px;
+            height: 312px;
+            padding: 2px;
+            margin: auto;
+            margin-top: 160px;
+            border: 3px brown;
+            border-style: groove;
+        }
+        .control{
+            width: 400px;
+            height: 280px;
+            
+        }   
+       
+        .play_pause{
+            display: inline-block;
+            position: relative;
+            background-color: gainsboro;
+            margin-left: 10px;
+            
+            border-radius: 5px;
+            transform: translateY(50%);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .play_pause:hover{
+            background-color: aqua;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            
+        }
+        .video_duratioin{
+            margin-left: 30px;
+            width: 50%;
+            background-color: blue;
+            transform: translateY(50%);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .skip{
+            margin-left: 10px;
+            
+            background-color: gainsboro;
+            transform: translateY(50%);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .skip:hover{
+            background-color: blue;
+            border-radius: 5px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <video width="500" height="200" class="control">
+                <source src="Movie.mp4">
+            </video>
+            
+                <button class="play_pause">|></button>
+                <input type="range" class="video_duratioin" min=0 max=1 step=0.05>
+                <button data-skip=-10 class="skip"> << </button>
+                <button data-skip=15 class="skip"> >> </button>
+            
+        </div>
+        <script>
+        const playing = document.querySelector(".control");
+        const button1 = document.querySelector(".play_pause");
+        const dd = document.querySelector("div");
+        console.log(playing.paused);
+        function video_play(){
+            if(playing.paused){
+                playing.play();
+            }
+            else{
+                playing.pause();
+            }
+        }
+        function adds(e){
+            var declaration = document.styleSheets[0].cssRules[3].style;
+            var setprop = declaration.setProperty("transform", "translateY(0)");
+            var setprop2 = declaration.setProperty("opacity", "1");
+            var declaration = document.styleSheets[0].cssRules[5].style;
+            var setprop = declaration.setProperty("transform", "translateY(0)");
+            var setprop2 = declaration.setProperty("opacity", "1");
+            var declaration = document.styleSheets[0].cssRules[6].style;
+            var setprop = declaration.setProperty("transform", "translateY(0)");
+            var setprop2 = declaration.setProperty("opacity", "1");
+        }
+        function removes(){
+            var declaration = document.styleSheets[0].cssRules[3].style;
+            var setprop = declaration.setProperty("transform", "translateY(50%)");
+            var setprop2 = declaration.setProperty("opacity", "0");
+            var declaration = document.styleSheets[0].cssRules[5].style;
+            var setprop = declaration.setProperty("transform", "translateY(50%)");
+            var setprop2 = declaration.setProperty("opacity", "0");
+            var declaration = document.styleSheets[0].cssRules[6].style;
+            var setprop = declaration.setProperty("transform", "translateY(50%)");
+            var setprop2 = declaration.setProperty("opacity", "0");
+        }
+        button1.addEventListener('click',video_play);
+        dd.addEventListener('mouseover',adds);
+        dd.addEventListener('mouseout',removes);
+        </script>
+    </body>
+
+</html>
